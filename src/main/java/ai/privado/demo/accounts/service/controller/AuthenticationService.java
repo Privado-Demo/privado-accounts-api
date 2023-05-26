@@ -79,6 +79,7 @@ public class AuthenticationService {
 			String firstName = signup.getFirstName();
 			String lastName = signup.getLastName();
 			String password = signup.getPassword();
+			String ssn = signup.getSSN();
 			UserE us = new UserE();
 			us.setEmail(email);
 			us.setFirstName(firstName);
