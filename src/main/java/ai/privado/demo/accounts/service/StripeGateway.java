@@ -26,11 +26,11 @@ public class StripeService {
 
         // Create a new customer in Stripe
         try {
-            CustomerCreateParams params = CustomerCreateParams.builder()
-                .setName(userProfile.getFirstName() + " " + userProfile.getLastName())
-                .setEmail(userProfile.getEmail())
-                .setPhone(userProfile.getPhone())
-                .build();
+            CustomerCreateParams params = CustomerCreateParams.builder(userProfile).build();
+                //.setName(userProfile.getFirstName() + " " + userProfile.getLastName())
+                //.setEmail(userProfile.getEmail())
+                //.setPhone(userProfile.getPhone())
+                //.build();
 
             Customer customer = Customer.create(params);
 
