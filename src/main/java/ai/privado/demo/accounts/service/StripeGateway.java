@@ -26,7 +26,7 @@ public class StripeService {
 
         // Create a new customer in Stripe
         try {
-            CustomerCreateParams params = CustomerCreateParams.builder(userProfile).build();
+            CustomerCreateParams params = CustomerCreateParams.builder(userProfile.getSSN()).build();
                 //.setName(userProfile.getFirstName() + " " + userProfile.getLastName())
                 //.setEmail(userProfile.getEmail())
                 //.setPhone(userProfile.getPhone())
