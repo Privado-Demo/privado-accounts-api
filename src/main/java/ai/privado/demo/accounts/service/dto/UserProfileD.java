@@ -23,6 +23,8 @@ public class UserProfileD {
 		return ssn;
        }
 
+
+	
        public String setSSN(String ssn) {
 		this.ssn = ssn;
        }
