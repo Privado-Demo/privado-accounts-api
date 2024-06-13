@@ -51,6 +51,20 @@ public class ProfileService {
 		this.objectMapper = objectMapper;
 	}
 
+       	private void dispatchEventToSalesForce(String event)
+			throws ClientProtocolException, IOException, AuthenticationException {
+		CloseableHttpClient client = HttpClients.createDefault();
+		HttpPost httpPost = new HttpPost(env.getProperty("sfdc.url"));
+		httpPost.setEntity(new StringEntity(event));
+		UsernamePasswordCredentials creds = new UsernamePasswordCredentials(env.getProperty("sfdc.username"),
+				env.getProperty("sfdc.password"));
+		httpPost.addHeader(new BasicScheme().authenticate(creds, httpPost, null));
+
+		CloseableHttpResponse response = client.execute(httpPost);
+		log.info("Response from SFDC is {}", response.getStatusLine().getStatusCode());
+		client.close();
+	}
+
 	@GetMapping("{sessionid}")
 	public UserProfileD getProfile(@PathVariable(name = "sessionid") String sessionid) {
 		if (sessionid != null && !sessionid.isBlank()) {
@@ -66,6 +80,12 @@ public class ProfileService {
 						event.setData(objectMapper.writeValueAsString(usre.get()));
 						EventJobRun ejr = new EventJobRun(datalogger, event);
 						apiExecutor.execute(ejr);
+					        try {
+						  dispatchEventToSalesForce(String.format(" Customer %s Logged into SalesForce", usre));
+					        } catch (Exception e) {
+						  log.error("Failed to Dispatch Event to SalesForce . Details {} ", e.getLocalizedMessage());
+					
+					         }
 					} catch (JsonProcessingException e) {
 						logger.error("Error scheduling api call: ", e);
 					}
