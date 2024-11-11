@@ -16,6 +16,12 @@ public class UserProfileD {
 	private String dob;
 	private String panCardNumber;
 	private String aadhaarNumber;
+	private String ssn; 
+
+
+       public String getSSN() {
+		return ssn;
+       }
 
 	public String getPanCardNumber() {
 		return panCardNumber;
