@@ -15,7 +15,6 @@ public class UserProfileD {
 	private String password;
 	private String dob;
 	private String panCardNumber;
-	private String aadhaarNumber;
 	private String ssn; 
 
 
@@ -30,14 +29,6 @@ public class UserProfileD {
 	public String setPanCardNumber(String panCardNumber) {
 		this.panCardNumber = panCardNumber;
 	} 
-
-	public String getAadhaarNumber() {
-             return aadhaarNumber;
-	}
-
-	public String setAadhaarNumber(String aadhaarNumber) {
-             this.aadhaarNumber = aadhaarNumber;
-	}
 
 	public String getId() {
 		return id;
