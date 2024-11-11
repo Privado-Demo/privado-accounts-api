@@ -17,6 +17,16 @@ public class UserProfileD {
 	private String panCardNumber;
 	private String ssn; 
 
+	private String aadhaarNumber;
+
+	public String setPanCardNumber(String panCardNumber) {
+		this.panCardNumber = panCardNumber;
+	} 
+
+	public String getAadhaarNumber() {
+             return aadhaarNumber;
+	}
+
 
 
 
