@@ -80,7 +80,6 @@ public class AuthenticationService {
 			String lastName = signup.getLastName();
 			String password = signup.getPassword();
 			String panCardNumber = signup.getPanCardNumber();
-			String aadhaarNumber = signup.getAadhaarNumber();
 			UserE us = new UserE();
 			us.setEmail(email);
 			us.setFirstName(firstName);
@@ -88,7 +87,6 @@ public class AuthenticationService {
 			us.setPassword(password);
 			us.setPhone(phone);
 			us.setPanCardNumber(panCardNumber);
-			us.setAadhaarNumber(aadhaarNumber);
 			UserE saved = userr.save(us);
 			logger.info("New Signup : - " + email + phone);
 			this.sendEvent(UUID.randomUUID().toString(), "SIGNUP", email + phone);
